@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day!</title>
+    <title>I'm Sorry</title>
     <style>
         body {
             background: url('https://www.transparenttextures.com/patterns/heart.png') repeat;
@@ -14,36 +14,73 @@
             height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
-            text-align: center;
             background-color: #ffe6f0;
+            overflow: hidden;
         }
         h1 {
-            color: #ff3399;
+            color: #ff0000;
             font-size: 3em;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
         }
-        p {
-            font-size: 1.5em;
-            color: #ff66b2;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50% 50% 45% 45%;
+            animation: rise 10s linear infinite;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            line-height: 70px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .emoji {
-            font-size: 4em;
-            margin-bottom: 20px;
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
-        img {
-            width: 300px;
-            height: auto;
-            margin-top: 20px;
+
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) translateX(50px);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Happy Valentine's Day SHREYAAAAAA LAKSHMISAI MADDHALI</h1>
-    <p>I LOVE YOUUUUUUUUU! 💖</p>
-    <div class="emoji">😻</div>
-    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Dancing Cat">
+    <h1>I'm Sorry Shreya Maddhali</h1>
+
+    <script>
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.textContent = '❤';
+
+            const randomLeft = Math.random() * window.innerWidth;
+            balloon.style.left = `${randomLeft}px`;
+            balloon.style.animationDuration = `${5 + Math.random() * 5}s`;
+
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 10000);
+        }
+
+        setInterval(createBalloon, 300);
+    </script>
 </body>
 </html>
